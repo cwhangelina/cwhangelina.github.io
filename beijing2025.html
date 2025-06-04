@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北京8天詳細行程計劃</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 17px; /* 略微增大基礎字體 */
+            line-height: 1.7; /* 相應調整行高 */
+            margin: 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        .day-block {
+            margin-bottom: 22px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .day-block summary {
+            padding: 16px 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #e9ecef;
+            cursor: pointer;
+            outline: none;
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .day-block summary::-webkit-details-marker {
+            display: none;
+        }
+        .day-block summary::after {
+            content: '+';
+            font-size: 1.6em;
+            color: #007bff;
+        }
+        .day-block[open] summary::after {
+            content: '−';
+        }
+        .day-details {
+            padding: 16px 15px;
+            border-top: 1px solid #ddd;
+        }
+        .day-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .day-details li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 1em;
+        }
+        .day-details li::before {
+            content: "🕒";
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+        .day-details strong {
+            color: #495057;
+        }
+        .highlight {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .meal-info, .transport-info, .detail-item {
+            font-style: italic;
+            display: block;
+            margin-left: 25px;
+            margin-top: 4px; /* 增加與上方文字間距 */
+            font-size: 0.95em; /* 細節信息字體可略小 */
+        }
+        .meal-info {
+            color: #28a745;
+        }
+        .transport-info {
+            color: #17a2b8;
+        }
+        .detail-item {
+            color: #6f42c1; /* 紫色用於更細緻的點 */
+        }
+        .notes {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 6px;
+            margin-left: 25px;
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                font-size: 16px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .day-block summary {
+                padding: 14px 12px;
+                font-size: 1.05em;
+            }
+            .day-details {
+                padding: 14px 12px;
+            }
+            .day-details li {
+                padding-left: 22px;
+            }
+            .meal-info, .transport-info, .detail-item, .notes {
+                margin-left: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>北京8天詳細行程計劃 (2025年7月)</h1>
+
+        <details class="day-block" open>
+            <summary>第一天 (2025年7月1日，星期二): 澳門 → 北京 → 酒店 → 國貿CBD</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>11:00：</strong> 澳門國際機場起飛。</li>
+                    <li><strong>約 14:30 - 15:00：</strong> 預計抵達北京首都國際機場 (PEK) 或大興國際機場 (PKX)。</li>
+                    <li><strong>約 15:00 - 17:00：</strong> 前往酒店並辦理入住 (北京國貿大酒店Jen)。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">機場快軌：票價25元/人。若抵達首都機場(PEK)，可乘機場快軌至“三元橋站”換乘地鐵10號線(往勁松/國貿方向)至“國貿站”；或至“東直門站”換乘地鐵2號線(內環/外環均可，往建國門方向較近)至“建國門站”再換乘1號線(往四惠東方向)至“國貿站”。<strong class="highlight">注意：機場快軌換乘地鐵需出站另行購票或刷卡/碼。</strong></span>
+                        <span class="detail-item">打車/網約車：從機場直接前往國貿地區酒店，費用約80-120元人民幣 (視機場、路況及車型而定)，高峰期可能更高。車程約40-60分鐘。</span>
+                    </li>
+                    <li><strong>17:00後：</strong> 酒店休整，熟悉周邊環境，或輕鬆在國貿商城內逛逛。</li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">建議在國貿商城內選擇餐廳，或酒店附近解決。選擇豐富，豐儉由人。</span>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第二天 (2025年7月2日，星期三): 天安門 → 故宮 → 國家博物館</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 8:30：</strong> 從酒店出發。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">地鐵：從“國貿站”乘地鐵1號線(往古城/蘋果園方向)至“天安門東站”(靠近國家博物館和故宮午門入口)或“天安門西站”(靠近天安門城樓和人民大會堂)。</span>
+                        <span class="detail-item">打車/網約車：可設定目的地為國家大劇院附近或前門一帶，然後步行前往天安門廣場，因天安門核心區交通管制較多。</span>
+                    </li>
+                    <li><strong>9:00 - 9:30：</strong> 遊覽天安門廣場。</li>
+                    <li><strong>9:30 - 13:00：</strong> 故宮博物院 (已預約門票)。</li>
+                    <li><strong>午餐 (13:00 - 14:00)：</strong>
+                        <span class="meal-info">故宮內：可選擇“故宮角樓咖啡”或“冰窖餐廳”等提供簡餐。</span>
+                        <span class="meal-info">故宮外：神武門(北門)出口，可步行至南池子大街的“四季民福烤鴨店(故宮店)”(人多，建議錯峰或預訂)；或景山前街附近簡餐。</span>
+                    </li>
+                    <li><strong>下午 14:00 - 16:30：</strong> 國家博物館 (已預約門票)。</li>
+                    <li><strong>17:00後：</strong> 返回酒店休息。
+                        <span class="transport-info">交通建議：地鐵1號線從“天安門東站”返回“國貿站”；或打車。</span>
+                    </li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">國貿附近或酒店內。</span>
+                    </li>
+                    <li><span class="notes highlight">此日步行較多，較累。務必穿著舒適鞋履。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第三天 (2025年7月3日，星期四): 北京環球影城</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 9:00 - 9:30：</strong> 從酒店出發。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">地鐵：從“國貿站”乘地鐵1號線(往四惠東方向)至“四惠站”或“四惠東站”，換乘八通線(往環球度假區方向)至終點“環球度假區站”。出站後步行約5-10分鐘即可抵達樂園入口。全程約1小時。</span>
+                        <span class="detail-item">打車/網約車：約40-60分鐘，高峰期可能遇堵車，費用約60-100元。</span>
+                    </li>
+                    <li><strong>10:30 - 18:00 (或更晚)：</strong> 北京環球影城全天遊玩。</li>
+                    <li><strong>午餐：</strong>
+                        <span class="meal-info">園區內：如哈利波特園區的“三把掃帚餐廳”、小黃人樂園的“小黃人樂園餐廳”等。</span>
+                    </li>
+                    <li><strong>18:00後：</strong> 離開環球影城。
+                        <span class="transport-info">交通建議：同上午，地鐵或打車返回。</span>
+                    </li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">環球影城城市大道：如“酷巧 KUCHA 巧克力商店和甜品坊”等；或返回國貿後用餐。</span>
+                    </li>
+                    <li><span class="notes highlight">此日遊玩時間長，較累。善用優速通。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第四天 (2025年7月4日，星期五): 雍和宮 → 五道營 → 自由活動</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 9:30：</strong> 酒店出發。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">地鐵：從“國貿站”乘地鐵1號線(往古城/蘋果園方向)至“建國門站”換乘2號線(往東直門/西直門方向，內環)至“雍和宮站”，從C口(西南口)出，步行即可到達雍和宮入口。或從“國貿站”乘地鐵10號線(往勁松/國貿方向，外環)至“呼家樓站”換乘6號線(往海淀五路居方向)至“南鑼鼓巷站”再換乘8號線(往朱辛庄方向)至“什剎海站”後打車或公交前往雍和宮（此線路較繞，但可體驗不同線路）。更優選擇：從“國貿站”乘1號線到“東單站”換5號線(往天通苑北方向)到“雍和宮站”。</span>
+                    </li>
+                    <li><strong>10:30 - 12:00：</strong> 參觀雍和宮。</li>
+                    <li><strong>午餐 (12:00 - 14:00)：</strong>
+                        <span class="meal-info">五道營胡同內：如“藏紅花西餐廳 (Saffron)”、“游Youhouse”等特色餐廳。</span>
+                        <span class="meal-info">雍和宮附近：高端素食可選“京兆尹 (King's Joy)”(需預訂，較貴)；或雍和宮大街上的“七尋八找”等家常菜。</span>
+                    </li>
+                    <li><strong>下午：</strong> **完全自由活動**。</li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">國貿附近，或根據下午活動地點靈活安排。</span>
+                    </li>
+                    <li><span class="notes highlight">此日為關鍵休整日。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第五天 (2025年7月5日，星期六): 頤和園 → 酒店休閒</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 9:00：</strong> 酒店出發。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">地鐵：從“國貿站”乘地鐵1號線(往古城/蘋果園方向)至“西單站”換乘地鐵4號線-大興線(往安河橋北方向)。
+                            <br>- 若前往頤和園北宮門(靠近蘇州街、四大部洲)：在“北宮門站”下車，D口出，步行約5分鐘。
+                            <br>- 若前往頤和園東宮門(正門，靠近仁壽殿)：在“西苑站”下車，C2口出，向西步行約10-15分鐘。</span>
+                        <span class="detail-item">打車/網約車：直接前往頤和園東宮門或北宮門，車程約40-60分鐘，費用約50-80元。</span>
+                    </li>
+                    <li><strong>10:30 - 14:30：</strong> 遊覽頤和園。</li>
+                    <li><strong>午餐 (14:30 - 15:30)：</strong>
+                        <span class="meal-info">頤和園內：著名餐廳“頤和園聽鸝館飯莊”(價格較高，可品嚐宮廷菜點)。</span>
+                        <span class="meal-info">頤和園外：北宮門或東宮門附近有多家餐館，如“西貝莜面村(頤和園店)”等。</span>
+                    </li>
+                    <li><strong>下午：</strong> 返回酒店休息或自由活動。
+                        <span class="transport-info">交通建議：地鐵或打車返回國貿。</span>
+                    </li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">國貿附近。</span>
+                    </li>
+                    <li><span class="notes highlight">此日中等強度。建議提前預約門票。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第六天 (2025年7月6日，星期日): 王府井(彌撒) → 恭王府 → 什剎海</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 約8:30：</strong> 酒店出發。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">地鐵：從“國貿站”乘地鐵1號線(往古城/蘋果園方向)至“王府井站”，A口(西北口)或C口(東南口)出，步行約10分鐘至王府井天主堂(聖若瑟堂)。</span>
+                    </li>
+                    <li><strong>9:30 - 約10:30/11:00：</strong> 參加王府井天主堂的彌撒。</li>
+                    <li><strong>之後至12:30：</strong> 逛王府井步行街。</li>
+                    <li><strong>午餐 (12:30 - 13:30)：</strong>
+                        <span class="meal-info">王府井區域：如“四季民福烤鴨店(王府井店)”、北京APM商場內有多家餐廳可選。</span>
+                    </li>
+                    <li><strong>下午：</strong> 前往恭王府。
+                        <span class="transport-info">交通建議：從王府井地區打車/網約車前往恭王府，車程約15-25分鐘，費用約20-30元。公交較慢且需換乘。</span>
+                    </li>
+                    <li><strong>14:15 - 16:15：</strong> 參觀恭王府。</li>
+                    <li><strong>16:15 - 17:30：</strong> 從恭王府步行至什剎海 (后海) 區域。</li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">什剎海/后海周邊：如老字號“烤肉季”、南門涮肉(后海店)等；或荷花市場附近餐飲。</span>
+                    </li>
+                    <li><span class="notes highlight">此日中等強度。提前確認彌撒時間，預約恭王府門票。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第七天 (2025年7月7日，星期一): 慕田峪長城</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 8:00 - 8:30：</strong> 從酒店出發。
+                        <span class="transport-info">交通強烈建議：</span>
+                        <span class="detail-item">包車/網約車：最便捷舒適，單程約1.5-2小時，費用約500-700元往返(視車型和季節)。</span>
+                        <span class="detail-item">景區直通巴士：“慕巴士”或“贊巴士”，從市區指定地點(如東直門、芍藥居地鐵站附近)發車，往返票價約80-120元/人。需提前預訂。</span>
+                        <span class="detail-item">公交(較耗時)：從“東直門公交樞紐”乘916快車(京承高速)到“懷柔北大街站”(約1小時，票價約12元)，下車後在馬路對面換乘H23、H24、H35、H36路公交至“慕田峪長城站”或“慕田峪環島站”(約40-50分鐘，票價約5元)。<strong class="highlight">此方案總耗時較長，換乘不便，不首推。</strong></span>
+                    </li>
+                    <li><strong>約 10:00/10:30 - 14:30：</strong> 遊覽慕田峪長城。</li>
+                    <li><strong>午餐 (14:30 - 15:30)：</strong>
+                        <span class="meal-info">慕田峪景區內外：如景區內的“翼松樓餐廳”、山腳下的“餡老滿(慕田峪店)”、或一些農家菜館。</span>
+                    </li>
+                    <li><strong>下午：</strong> 返回酒店休息。
+                         <span class="transport-info">交通：同上午，包車或直通巴士返回市區酒店。</span>
+                    </li>
+                    <li><strong>晚餐：</strong>
+                        <span class="meal-info">國貿附近，好好休息。</span>
+                    </li>
+                    <li><span class="notes highlight">此日較累。務必穿著舒適，做好防曬。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>第八天 (2025年7月8日，星期二): 天壇公園 → 機場返程</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>上午 8:30：</strong> 酒店辦理退房，寄存行李後出發。
+                        <span class="transport-info">交通建議：</span>
+                        <span class="detail-item">地鐵：從“國貿站”乘地鐵1號線(往古城/蘋果園方向)至“東單站”換乘地鐵5號線(往宋家莊方向)至“天壇東門站”，A口(東北口)出即到天壇公園東門。</span>
+                        <span class="detail-item">打車/網約車：從酒店至天壇公園東門，約20-30分鐘，費用約20-30元。</span>
+                    </li>
+                    <li><strong>9:15 - 11:45：</strong> 參觀天壇公園。</li>
+                    <li><strong>午餐 (11:45 - 12:15)：</strong>
+                        <span class="meal-info">天壇東門附近：如老字號“南門涮肉(天壇店)”、家常菜“大碗居(天壇店)”等。或返回國貿途中簡餐。</span>
+                    </li>
+                    <li><strong>約 12:15 - 12:30：</strong> 從天壇/國貿酒店取行李後出發前往機場。
+                        <span class="transport-info">交通建議（前往機場）：</span>
+                        <span class="detail-item">若往首都機場(PEK)：從酒店打車至“東直門”或“三元橋”乘機場快軌 (25元)；或全程打車 (約80-120元)。</span>
+                        <span class="detail-item">若往大興機場(PKX)：從酒店打車至地鐵“草橋站”乘大興機場快線 (普通座35元)；或全程打車 (約130-180元)。</span>
+                        <span class="detail-item"><strong class="highlight">請務必為機場交通預留至少3-4小時 (含市內交通、機場快軌/地鐵、安檢、登機手續等時間)。</strong></span>
+                    </li>
+                    <li><strong>16:00：</strong> 北京的機場起飛，返回澳門。</li>
+                    <li><span class="notes highlight">建議提前預約天壇公園門票。</span></li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="day-block">
+            <summary>行前重要提醒</summary>
+            <div class="day-details">
+                <ul>
+                    <li><strong>門票預約：</strong> <span class="highlight">故宮、國家博物館、環球影城、頤和園、恭王府、天壇公園等熱門景點，務必提前7天左右通過官方微信公眾號、官方APP或網站實名預約門票。</span></li>
+                    <li><strong>天氣與衣物：</strong> 7月北京天氣炎熱且可能多雨，請準備輕便透氣的夏季衣物、舒適的步行鞋、太陽帽、太陽鏡、防曬霜，並隨身攜帶雨具。</li>
+                    <li><strong>交通出行：</strong> 北京地鐵發達，是市區出行的主要方式。建議下載“億通行”APP掃碼乘車或辦理一卡通。高峰期地面交通易擁堵，打車請預留時間。</li>
+                    <li><strong>身份證明：</strong> 隨身攜帶有效身份證件（回鄉證/護照），景點預約、入園及住宿均需使用。</li>
+                    <li><strong>健康與藥品：</strong> 注意飲食衛生，多飲水防中暑。可準備一些常用藥品如感冒藥、腸胃藥、防蚊蟲叮咬藥水等。</li>
+                    <li><strong>支付方式：</strong> 內地主要使用支付寶和微信支付，建議提前綁定銀行卡或充值。部分商家也接受現金和國際信用卡。</li>
+                    <li><strong>保持彈性：</strong> 行程計劃僅供參考，可根據實際體力、天氣及興趣隨時調整。舒適愉快的旅行最重要。</li>
+                </ul>
+            </div>
+        </details>
+
+    </div>
+</body>
+</html>
