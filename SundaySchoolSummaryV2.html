@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2024-2025主日學年度檢討意見整理</title>
+  <style>
+    :root {
+      --primary: #3f51b5;
+      --secondary: #f5f5f5;
+      --accent: #ff9800;
+      --card-bg: #fff;
+      --divider: #e0e0e0;
+      --card-radius: 16px;
+      --shadow: 0 4px 16px rgba(63,81,181,0.10);
+    }
+    html {
+      font-size: 18px;
+    }
+    body {
+      background: var(--secondary);
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif;
+      color: #222;
+      font-size: 1.1em;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      border-radius: 0 0 36px 36px;
+    }
+    header h1 {
+      margin: 0 0 0.4em 0;
+      font-weight: 900;
+      font-size: 2.2em;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.13em;
+      max-width: 650px;
+      margin: 0 auto;
+      opacity: 0.92;
+    }
+    .container {
+      max-width: 980px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .summary-card {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border-radius: var(--card-radius);
+      padding: 1.5em 1.2em 1.5em 1.2em;
+      margin-bottom: 2.5rem;
+      border-left: 6px solid var(--accent);
+      display: flex;
+      align-items: flex-start;
+      gap: 1em;
+    }
+    .summary-card .icon {
+      font-size: 2.5em;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.1em;
+    }
+    .summary-card .summary-content {
+      flex: 1;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    .section-title {
+      color: #3f51b5;
+      font-size: 1.35em;
+      letter-spacing: 1px;
+      margin-bottom: 0.6em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-weight: bold;
+    }
+    .section-title .icon {
+      font-size: 1.45em;
+      color: var(--accent);
+    }
+    .card-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4em;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      box-shadow: var(--shadow);
+      padding: 1.1em 1.1em 1.4em 1.1em;
+      flex: 1 1 340px;
+      min-width: 310px;
+      max-width: 100%;
+      margin-bottom: 1em;
+      border-top: 5px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+    }
+    .card .card-title {
+      font-weight: bold;
+      font-size: 1.08em;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      margin-bottom: 0.25em;
+    }
+    ul, ol {
+      margin: 0.5em 0 0.5em 1.2em;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.42em;
+      line-height: 1.7;
+    }
+    .divider {
+      border-bottom: 2px solid var(--divider);
+      margin: 2.8em 0 2.2em 0;
+    }
+    .actions-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1em;
+    }
+    .action-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
+      padding: 1em 1em 0.6em 1em;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9em;
+    }
+    .action-card .icon {
+      font-size: 1.5em;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.06em;
+    }
+    .action-card .action-content {
+      flex: 1;
+    }
+    @media (max-width: 820px) {
+      .card-group {
+        flex-direction: column;
+        gap: 0.8em;
+      }
+      .card {
+        min-width: unset;
+        padding: 1em 0.7em 1.1em 0.7em;
+      }
+      .actions-group {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      html { font-size: 16px; }
+      header {
+        padding: 1.1rem 0.4rem 1rem 0.4rem;
+        border-radius: 0 0 22px 22px;
+      }
+      header h1 {
+        font-size: 1.3em;
+      }
+      .summary-card {
+        flex-direction: column;
+        padding: 1.1em 0.7em 1.1em 0.7em;
+      }
+      .card {
+        padding: 0.7em 0.5em 0.9em 0.5em;
+      }
+      .action-card {
+        padding: 0.7em 0.5em 0.6em 0.5em;
+      }
+    }
+    .subpoint {
+      color: #555;
+      margin-top: 0.1em;
+      font-size: 0.98em;
+    }
+    .card ul ul {
+      margin-left: 1.1em;
+      list-style-type: circle;
+    }
+    /* 滾動條美化 */
+    ::-webkit-scrollbar { width: 7px; background: #f5f5f5;}
+    ::-webkit-scrollbar-thumb { background: #dadada; border-radius: 8px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>2024-2025主日學年度檢討意見整理</h1>
+    <p>（截至2025-06-13）</p>
+  </header>
+  <div class="container">
+    <div class="summary-card">
+      <span class="icon">📑</span>
+      <div class="summary-content">
+        <h2 style="margin-top:0; margin-bottom:0.2em; color:#3f51b5;font-size:1.2em;">報告摘要</h2>
+        <ul>
+          <li>本報告整理主日學團隊成員回饋，涵蓋教學與課程、學生手冊、活動與溝通、學生家長小導師參與、團隊資源成長等多面向。</li>
+          <li>針對教材系統性、升班銜接、手冊電子化、活動分工、資訊分流、小導師培育、家長互動、IT資源、獎勵與決策等提出具體建議與挑戰。</li>
+          <li>最後歸納短中長期推動重點，並建議成立專項小組、設置創新提案池、跨堂區交流、經驗傳承等行動方案。</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 一、教學與課程 -->
+    <section>
+      <div class="section-title"><span class="icon">📚</span>一、教學與課程——在系統與彈性之間尋求卓越</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-title">系統性整合的呼聲</div>
+          <ul>
+            <li>部分導師反映教材缺乏統一，出現「各施各法」、「內容重複或有斷層」等問題。</li>
+            <li>升班（如聖體班→聖體後班）時，課程銜接不順。</li>
+            <li>建議建立跨階段教學大綱、共享教材資源庫（如PPT、教案、工作紙），由資深導師或小組整理，確保每階段內容有系統承接。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">彈性分班與教學模式</div>
+          <ul>
+            <li>多數認同維持年齡/年級分班，但建議：</li>
+            <ul>
+              <li>小班收生不足時可合併，或主題式教學、導師輪換或專題授課。</li>
+              <li>部分意見主張分為小班（幼兒至聖體班）與大班（聖體後班至堅振班），由固定導師團隊負責，加強階段性銜接。</li>
+            </ul>
+            <li>現時每班導師多跟班數年，連貫性佳，但升班後仍有銜接疑慮。</li>
+            <li>整體團隊肯定現有優點，認為可進一步完善系統與彈性兼顧。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">課程內容多元化與深度</div>
+          <ul>
+            <li>有建議加強聖經教學、多閱讀聖經。</li>
+            <li>於課堂引入教會文件、通諭，拓展信仰視野。</li>
+            <li>建議課程中適量加入為世界、社會祈禱環節，培養學生時代責任感。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 二、學生手冊 -->
+    <section>
+      <div class="section-title"><span class="icon">📒</span>二、學生手冊：傳統與創新的多元探索</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-title">保留實體，優化設計</div>
+          <ul>
+            <li>多數成員認同繼續保留實體手冊，反對全面電子化。</li>
+            <li>理由包含：低年級缺乏電子設備，紙本有紀錄、溝通價值。</li>
+            <li>建議模組化設計：如固定祈禱經文、規則等可重複使用，行事曆及簽到頁每年更換。</li>
+            <li>建議提升紙張、製作質量，因手冊需長期使用。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">多元意見與彈性探索</div>
+          <ul>
+            <li>部分認為高年級學生用手冊意義不大，建議取消或開放選擇，甚至以電子版取代。</li>
+            <li>報名、出席率統計等行政工作可優先電子化，以減輕校務負擔。</li>
+            <li>提醒資訊平台過多會造成混亂，電子化推行需審慎。建議行政流程先行電子化，教學內容則視年齡分階段推進。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 三、活動籌備與內部溝通 -->
+    <section>
+      <div class="section-title"><span class="icon">🛠️</span>三、活動籌備與內部溝通</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-title">活動籌備：流程與分工優化</div>
+          <ul>
+            <li>隨團隊規模壯大，分工與參與人數增加，籌備大型活動時常遇：</li>
+            <ul>
+              <li>準備時間緊迫、分工與流程未能及早明確。</li>
+              <li>決策過程透明度不夠。</li>
+              <li>臨近活動才臨時分配工作，或部分流程由少數同工決定，許多細節需現場臨時協調，影響整體表現。</li>
+              <li>資訊未必能及時公開，影響透明度與參與感。</li>
+            </ul>
+            <li>反思有助未來完善流程，讓更多成員主動參與規劃與分工，發揮集體智慧。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">內部溝通——為資訊「分流、減壓」</div>
+          <ul>
+            <li>普遍認同「資訊泛濫、訊息易遺漏、群組壓力大」。</li>
+            <li>建議：</li>
+            <ul>
+              <li>WhatsApp大群組僅用於公告，並善用「置頂」功能。</li>
+              <li>複雜討論應在「專屬討論群組」或「實體聚會」進行。</li>
+              <li>鼓勵先在班級等小範圍內溝通，形成共識後再上呈大組，避免資訊混亂。</li>
+              <li>多元溝通模式（定期聚會、線上會議等）廣獲支持。</li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 四、夥伴網絡：學生、家長、小導師 -->
+    <section>
+      <div class="section-title"><span class="icon">🤝</span>四、夥伴網絡：學生、家長、小導師的參與提升</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-title">學生參與及獎勵</div>
+          <ul>
+            <li>提升學生彌撒參與度：</li>
+            <ul>
+              <li>家長角色關鍵，需持續與家長溝通。</li>
+              <li>設立「彌撒獎勵計劃」，以蓋印、貼紙等方式記錄，並定期公開表揚，正向激勵出席。</li>
+              <li>有導師提出讓學生參與彌撒服務、收奉獻、活動策劃等方式提升參與感。</li>
+            </ul>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">家長連結與支援</div>
+          <ul>
+            <li>「家長加油站」成效有限，建議組織家長義工/支援組，主動邀請家長參與活動策劃與執行，促進互動與歸屬感。</li>
+            <li>家長群組可考慮增設學生，提升訊息傳遞與學生投入度。聖體後班可考慮讓學生本人加入群組，增強高年級參與與責任感。</li>
+            <li>強調主動與家長溝通，了解家庭實況，共同為學生培育努力。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">小導師賦能</div>
+          <ul>
+            <li>小導師需定期培訓，並有實踐機會（如教學、活動帶領、教具製作、社區服務）以服務發現自我。</li>
+            <li>建議培訓由神父或資深導師帶領，每年至少一次。</li>
+            <li>鼓勵「以舊帶新」，建立團隊歸屬感。</li>
+            <li>多位導師建議讓小導師參與活動規劃與團隊討論，有助建立歸屬感與領導能力。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 五、團隊成長、資源與制度 -->
+    <section>
+      <div class="section-title"><span class="icon">🌱</span>五、團隊成長、資源與制度</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-title">團隊聚會與氛圍</div>
+          <ul>
+            <li>幾乎所有回應都強烈期盼定期、輕鬆（如茶會、早餐、戶外散步、運動等多元形式）的實體聚會，以促進默契與關係。</li>
+            <li>建議聚會不必過於正式，可由不同導師輪流主辦，提前安排好日期。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">IT資源與培訓</div>
+          <ul>
+            <li>多數導師希望IT技能提升（如PPT、簡報、AI應用、互動教學程式），有明確添置一部硬體（手提電腦）需求，以支持教學。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">獎勵與制度</div>
+          <ul>
+            <li>建議增設服務獎、家長服務獎、創意獎等多元獎項，高年級學生可選擇實用文具或科技產品。</li>
+            <li>強調「公平、公開、透明」的評核機制，小導師也可參與評核，確保獎勵能真正發揮鼓勵與肯定作用。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">功能小組與決策</div>
+          <ul>
+            <li>有人支持成立功能小組，但多數認為應由有心者自願參與，自然形成，避免變成小圈子或僵化機制。</li>
+            <li>應鼓勵跨組合作，促進團隊整合與交流。</li>
+            <li>領導角色可定期輪換或互選，讓更多人有機會嘗試。</li>
+            <li>決策上，強調集思廣益，小數服從多數。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 六、其他具體建議與價值觀 -->
+    <section>
+      <div class="section-title"><span class="icon">💡</span>六、其他具體建議與價值觀</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-title">多元交流與團隊文化</div>
+          <ul>
+            <li>建議多與其他堂區交流，提升視野。</li>
+            <li>團隊應強調互助、尊重、平等，每位成員都有發言權。</li>
+            <li>資訊整合與發佈流程需要優化。</li>
+            <li>深化年度信仰主題於課程與活動設計。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-title" style="color:#ff9800;"><span class="icon">🚩</span>七、總結與後續行動建議</div>
+      <div class="actions-group">
+        <div class="action-card">
+          <span class="icon">⚡</span>
+          <div class="action-content">
+            <b>確立優先次序：</b>
+            <ul>
+              <li>短期可立即執行：如優化WhatsApp群組管理、設立彌撒獎勵計劃等。</li>
+              <li>中期需規劃推動：如建立共享教材庫、組織家長義工組、籌備IT技能培訓等。</li>
+              <li>長期需持續研討：如建立跨階段的教學大綱、完善小導師培育系統等。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="action-card">
+          <span class="icon">🧩</span>
+          <div class="action-content">
+            <b>成立專項工作小組：</b>
+            <ul>
+              <li>針對中期與長期重點項目（如「課程系統化」、「活動流程優化」），邀請有興趣成員自願組成專項小組，深化研究並提出具體方案。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="action-card">
+          <span class="icon">🌟</span>
+          <div class="action-content">
+            <b>人才培育與經驗傳承：</b>
+            <ul>
+              <li>每個重點領域（如活動籌備、教學設計、家長工作等）建立「助理/副手」制度，新成員或小導師可參與並逐步承擔更多責任。</li>
+              <li>有助團隊成長、經驗傳承與活力延續。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="action-card">
+          <span class="icon">🌍</span>
+          <div class="action-content">
+            <b>跨堂區或對外資源交流：</b>
+            <ul>
+              <li>主動與其他堂區、教區或同類團體建立定期交流渠道，如參與聯合工作坊、分享會等。</li>
+              <li>有助開闊視野、汲取外部經驗，提升團隊影響力與自信。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="action-card">
+          <span class="icon">💡</span>
+          <div class="action-content">
+            <b>設立「創新提案池」：</b>
+            <ul>
+              <li>鼓勵所有成員（包括家長、學生、小導師）隨時提交改善主日學的提案，定期由團隊討論、篩選可行方案進行試點。</li>
+              <li>可增強參與感，激發創意，推動主日學持續進步。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="action-card">
+          <span class="icon">📝</span>
+          <div class="action-content">
+            <b>設定明確的討論議程：</b>
+            <ul>
+              <li>將本報告正式列為下次團隊會議核心議程，設定明確討論目標與時間表，確保每次討論有具體成果。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div style="text-align:right;color:#aaa;font-size:0.97em;margin-top:2.5em;margin-bottom:1em;">
+      <span>主日學團隊整理</span>
+    </div>
+  </div>
+
+
+</body></html>
