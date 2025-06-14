@@ -169,19 +169,33 @@
   }
 }
   </style>
-  <script>
+<script>
     document.addEventListener("DOMContentLoaded", function() {
       const navLinks = document.querySelectorAll("nav a[data-section]");
       const sections = document.querySelectorAll("section");
+
       function showSection(id) {
+        // Hide all sections
         sections.forEach(sec => {
           sec.style.display = (sec.id === id) ? "block" : "none";
         });
+
+        // --- BUG FIX: More robust activation logic ---
+        // 1. First, remove 'active' class from all links
         navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute("data-section") === id);
+          link.classList.remove('active');
         });
+
+        // 2. Then, find the matching link and add the 'active' class
+        const activeLink = document.querySelector(`nav a[data-section="${id}"]`);
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
+        // --- END OF FIX ---
+
         window.scrollTo({top: 0, behavior: 'smooth'});
       }
+
       navLinks.forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
@@ -189,9 +203,10 @@
           history.replaceState(null,"", "#"+link.getAttribute("data-section"));
         });
       });
+
       // On load, show homepage, or anchor if present
       let anchor = window.location.hash.replace("#","");
-      if(anchor && document.getElementById(anchor)) {
+      if (anchor && document.getElementById(anchor)) {
         showSection(anchor);
       } else {
         showSection("summary");
