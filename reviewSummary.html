@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>主日學年度檢討2025報告重點簡報</title>
+  <style>
+    :root {
+      --main-color: #4376bb;
+      --accent: #f8c471;
+      --bg: #f4f7fb;
+      --border: #e0e6ee;
+      --minor: #666;
+      --main-font: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+    }
+    body {
+      background: var(--bg);
+      font-family: var(--main-font);
+      margin: 0;
+      color: #23374d;
+    }
+    header {
+      background: var(--main-color);
+      color: #fff;
+      padding: 2rem 1rem 1.2rem 1rem;
+      text-align: center;
+      border-bottom: 4px solid var(--accent);
+    }
+    header h1 {
+      margin: 0 0 0.2em 0;
+      font-size: 2.3em;
+      letter-spacing: 0.03em;
+      font-weight: 700;
+    }
+    header p {
+      margin: 0;
+      font-size: 1.15em;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    nav a {
+      background: #fff;
+      color: var(--main-color);
+      padding: 0.7em 1.5em;
+      border-radius: 1.5em;
+      border: 1px solid var(--main-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1em;
+      transition: background .2s, color .2s;
+    }
+    nav a.active, nav a:hover {
+      background: var(--main-color);
+      color: #fff;
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto 2.5rem auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px 0 rgba(67,118,187,0.07);
+      padding: 2rem 1.2rem;
+      font-size: 1.06em;
+      margin-top: -2rem;
+      min-height: 60vh;
+    }
+    section {
+      margin-bottom: 2.2rem;
+    }
+    h2 {
+      font-size: 1.35em;
+      color: var(--main-color);
+      margin-bottom: .5em;
+      margin-top: 1.5em;
+      font-weight: 600;
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.14em 0.7em;
+      font-size: .95em;
+      border-radius: 1em;
+      background: var(--accent);
+      color: #3a2c1a;
+      margin-left: .5em;
+    }
+    ul, ol {
+      padding-left: 1.3em;
+      margin-top: 0.3em;
+      margin-bottom: 0.7em;
+    }
+    li {
+      margin-bottom: .5em;
+      line-height: 1.7;
+    }
+    .minor {
+      color: #888;
+      font-size: .94em;
+      padding-left: 1.3em;
+    }
+    .highlight {
+      background: #e6f0fa;
+      border-left: 4px solid var(--main-color);
+      padding: .9em 1em;
+      border-radius: .7em;
+      margin: 1.3em 0 1.2em 0;
+    }
+    .main-opinion {
+      border-left: 4px solid var(--main-color);
+      background: #f7fafd;
+      padding: .75em 1em;
+      margin-bottom: .7em;
+      border-radius: .5em;
+    }
+    .minority-opinion {
+      border-left: 4px solid #f5b041;
+      background: #fff9ed;
+      padding: .7em 1em;
+      margin-bottom: .7em;
+      border-radius: .5em;
+    }
+    .id {
+      color: #8a5e19;
+      font-weight: 500;
+      font-size: .94em;
+      margin-left: .6em;
+    }
+    .link-block {
+      text-align: center;
+      margin: 1.5em 0 .9em 0;
+    }
+    .link-block a {
+      display: inline-block;
+      background: var(--main-color);
+      color: #fff;
+      padding: .7em 1.8em;
+      border-radius: 1.5em;
+      text-decoration: none;
+      font-size: 1.05em;
+      font-weight: 500;
+      margin-bottom: .3em;
+      transition: background .2s;
+    }
+    .link-block a:hover {
+      background: #2f4e77;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 700px) {
+      main { padding: 1.3rem .3rem; }
+      header h1 { font-size: 1.25em; }
+      .link-block a { padding: .65em 1.2em; font-size: 1em;}
+    }
+    @media (max-width: 480px) {
+      header { padding: 1.3rem 0.2rem 1rem 0.2rem; }
+      nav { gap: .4rem; }
+      main { padding: 0.8rem 0.01rem; }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const navLinks = document.querySelectorAll("nav a[data-section]");
+      const sections = document.querySelectorAll("section");
+      function showSection(id) {
+        sections.forEach(sec => {
+          sec.style.display = (sec.id === id) ? "block" : "none";
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute("data-section") === id);
+        });
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          showSection(link.getAttribute("data-section"));
+          history.replaceState(null,"", "#"+link.getAttribute("data-section"));
+        });
+      });
+      // On load, show homepage, or anchor if present
+      let anchor = window.location.hash.replace("#","");
+      if(anchor && document.getElementById(anchor)) {
+        showSection(anchor);
+      } else {
+        showSection("summary");
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>主日學運作年度檢討2025<br>重點簡報</h1>
+    <p>團隊回應精要、主流與細分意見一覽</p>
+  </header>
+
+  <nav>
+    <a href="#summary" data-section="summary" class="active">行政摘要</a>
+    <a href="#strengths" data-section="strengths">正面成果</a>
+    <a href="#improve" data-section="improve">改進方向</a>
+    <a href="#opinions" data-section="opinions">主流/少數意見</a>
+	<a href="review.html" target="_blank" rel="noopener">前往舊版整理</a>
+  </nav>
+
+  <main>
+    <section id="summary">
+      <h2>行政摘要</h2>
+      <div class="highlight">
+        <b>團隊表現獲高度肯定：</b>本次問卷共收到16份有效回覆，結果顯示成員普遍認同主日學的溫暖氛圍、互助精神，以及校務團和神父的支持。年度活動豐富、電子化工具提升效率、團隊歸屬感強，為未來發展奠定穩固基礎。
+      </div>
+      <ul>
+        <li>
+          <b>溝通協作：</b>現有溝通（如WhatsApp大群）在處理複雜議題時略顯不足，團隊期待<strong>定期實體聚會</strong>與<strong>專責小組</strong>細化分工，提升活動籌備效率。
+        </li>
+        <li>
+          <b>教學系統：</b>導師期望建立更有系統性的課程，確保不同階段間的銜接，避免內容重複或遺漏。
+        </li>
+        <li>
+          <b>學生參與與家長協同：</b>學生參與彌撒意願較低，普遍認為家長重視及參與是關鍵。建議發展家長義工組，並優化獎勵制度。
+        </li>
+        <li>
+          <b>團隊成長與支援：</b>小導師培育和IT技能提升需求明確，建議加強賦權與實用培訓。
+        </li>
+      </ul>
+      <div class="highlight">
+        <b>總結：</b>團隊有熱忱、有共識，只要進一步優化溝通、強化課程系統、深化家長合作並投資於成員成長，主日學將更上一層樓！
+      </div>
+      <div class="link-block">
+        <a href="https://docs.google.com/document/d/17lhm6LWM_rAWqdW3I0CzSO9dWqDsnUsYUmclnPbFPb0" target="_blank" rel="noopener">前往原始彙編檔案</a>
+      </div>
+    </section>
+
+    <section id="strengths" style="display:none">
+      <h2>團隊優勢與成效</h2>
+      <div class="main-opinion">
+        <b>活動豐富、團隊凝聚：</b> <span class="id">R01, R03, R05, R10, R12</span><br>
+        年度活動（如堅振班探訪墳場）內容充實、具意義，提升同工歸屬感。
+      </div>
+      <div class="main-opinion">
+        <b>電子化工具應用：</b> <span class="id">R06, R07, R11, R12, R15</span><br>
+        Google Forms、Share Drive等提升行政效率，獲普遍肯定。
+      </div>
+      <div class="main-opinion">
+        <b>團隊支持與歸屬感：</b> <span class="id">R03, R05, R09, R11, R12, R15</span><br>
+        成員欣賞團隊氣氛、互助及支持，並期望持續成長。
+      </div>
+      <div class="main-opinion">
+        <b>小班教學理念：</b> <span class="id">R05</span><br>
+        強調照顧每位學生，落實關懷與個別輔導。
+      </div>
+    </section>
+
+    <section id="improve" style="display:none">
+      <h2>四大重點改進方向</h2>
+      <ol>
+        <li>
+          <b>深化團隊溝通與活動協作</b>
+          <ul>
+            <li>定期實體聚會（如每月/每季），促進有效溝通與默契。</li>
+            <li>大型活動籌備應由專責小組討論細節，明確分工，避免一人承擔。</li>
+          </ul>
+        </li>
+        <li>
+          <b>系統化教學內容與課程銜接</b>
+          <ul>
+            <li>整合現有教案，建立涵蓋各階段的核心教材，兼顧彈性與連貫。</li>
+          </ul>
+        </li>
+        <li>
+          <b>提升學生彌撒參與與家長協同</b>
+          <ul>
+            <li>發展家長義工組，提高家長投入與參與。</li>
+            <li>由神父適時呼籲家長配合，營造重視信仰的家庭氛圍。</li>
+            <li>完善獎勵制度，提升學生參與動機，高年級獎品可考慮文具或科技產品。</li>
+          </ul>
+        </li>
+        <li>
+          <b>團隊成員持續成長與支援</b>
+          <ul>
+            <li>加強小導師實踐與參與決策的機會。</li>
+            <li>定期提供IT技能培訓（簡報、影片、AI應用等）。</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section id="opinions" style="display:none">
+      <h2>主流與少數意見對照</h2>
+      <div class="main-opinion">
+        <b>分班模式：</b>
+        <ul>
+          <li>主流：維持現行按年齡/聖事階段分班，靈活合班（<span class="id">R01, R02, R03, R05, R06, R09, R10, R12, R13, R15</span>）</li>
+          <li>主題式/合班建議（<span class="id">R04, R07, R11, R16</span>）</li>
+        </ul>
+      </div>
+      <div class="minority-opinion">
+        <b>少數意見：</b>
+        <ul>
+          <li>導師輪換制度（<span class="id">R12</span>）</li>
+          <li>二階段分班（<span class="id">R13</span>）</li>
+          <li>提高入學年齡（<span class="id">R04</span>）</li>
+        </ul>
+      </div>
+
+      <div class="main-opinion">
+        <b>教學內容：</b>
+        <ul>
+          <li>主流：希望統一教材，強化課程銜接（<span class="id">R02, R06, R07, R12</span>）</li>
+        </ul>
+      </div>
+      <div class="minority-opinion">
+        <b>少數意見：</b>
+        <ul>
+          <li>小班已有多年教學大綱，建議深化與整理（<span class="id">R06</span>）</li>
+        </ul>
+      </div>
+
+      <div class="main-opinion">
+        <b>學生手冊電子化：</b>
+        <ul>
+          <li>主流：反對全面電子化，建議雙軌或逐步推行，內容模組化（<span class="id">R01, R05, R06, R07, R09, R11, R12</span>）</li>
+        </ul>
+      </div>
+      <div class="minority-opinion">
+        <b>少數意見：</b>
+        <ul>
+          <li>建議全面電子化（<span class="id">R13</span>）</li>
+          <li>溝通內容電子化（<span class="id">R15, R08</span>）</li>
+        </ul>
+      </div>
+
+      <div class="main-opinion">
+        <b>家長參與：</b>
+        <ul>
+          <li>主流：家長義工組、主動溝通、強化家長協同（<span class="id">R02, R06, R08, R09, R11, R13, R15</span>）</li>
+        </ul>
+      </div>
+      <div class="minority-opinion">
+        <b>少數意見：</b>
+        <ul>
+          <li>家長加油站成效存疑（<span class="id">R02, R08, R12</span>）</li>
+          <li>學生加入家長群組（<span class="id">R04</span>）</li>
+        </ul>
+      </div>
+
+      <div class="main-opinion">
+        <b>團隊支持與小導師培育：</b>
+        <ul>
+          <li>主流：支持充足、小導師定期培訓與賦權（<span class="id">R01, R02, R03, R05, R06, R07, R08, R10, R11, R12, R13, R15</span>）</li>
+        </ul>
+      </div>
+      <div class="minority-opinion">
+        <b>少數意見：</b>
+        <ul>
+          <li>支持不足（<span class="id">R09</span>）</li>
+        </ul>
+      </div>
+
+      <div class="main-opinion">
+        <b>團隊溝通與活動籌備：</b>
+        <ul>
+          <li>主流：大群組資訊太雜，分流小組討論、定期聚會（<span class="id">R03, R08, R11, R13, R15</span>）</li>
+        </ul>
+      </div>
+      <div class="minority-opinion">
+        <b>少數意見：</b>
+        <ul>
+          <li>偏好家庭式運作、反對硬性分組（<span class="id">R01</span>）</li>
+          <li>擔憂功能小組成小圈子/協調不彰（<span class="id">R04, R13</span>）</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
