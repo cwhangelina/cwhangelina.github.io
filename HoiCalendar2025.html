@@ -1,0 +1,271 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta charset="UTF-8">
+  <title>2025年7月、8月 活動月曆列印版</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      background: #fff;
+      padding: 0; margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+    }
+    .month-page {
+      width: 297mm;
+      min-height: 210mm;
+      box-sizing: border-box;
+      padding: 10mm;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+    }
+    .month-page:last-child {
+      page-break-after: auto;
+    }
+    .month-title {
+      font-size: 2.4em;
+      font-weight: bold;
+      text-align: center;
+      margin: 0.4em 0 0.3em 0;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+    .month-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 1.2em;
+      flex-grow: 1;
+      display: table;
+    }
+    .month-table th, .month-table td {
+      border: 1.5pt solid #b8b8b8;
+      width: 14.285%;
+      vertical-align: top;
+      padding: 0.25em 0.4em;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+    }
+    .month-table th {
+      background: #e3f3ff;
+      text-align: center;
+      font-weight: 900;
+      font-size: 1.05em;
+      padding: 0.2em 0;
+    }
+    .month-table td.empty {
+      background: #f7f7f7;
+      border: 1.5pt solid #e0e0e0;
+    }
+    .date-num {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #283593;
+      margin-bottom: 0.2em;
+      display: block;
+    }
+    .activity-chip {
+      display: block;
+      border-radius: 0.5em;
+      padding: 0.1em 0.5em 0.15em 0.5em;
+      margin: 0.2em 0;
+      font-size: 0.95em;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 0.02em;
+      box-shadow: 0 1px 3px #00000029;
+    }
+    .chip-loc {
+      font-size: 0.9em;
+      display: block;
+      color: #fffde7;
+      opacity: 0.95;
+      font-weight: normal;
+      margin-left: 0.5em;
+      margin-top: 0.1em;
+      text-indent: -0.5em;
+    }
+    /* Activity colors by activityId */
+    .c1 { background: #448aff; }
+    .c2 { background: #ff7043; }
+    .c3 { background: #43a047; }
+    .c4 { background: #9c27b0; }
+    .c5 { background: #fbbe25; color: #272727; }
+    .c6 { background: #0097A7; }
+    .c7 { background: #f06292; }
+	.c8 { background: #4B0082; }
+	.c9 { background: #DB7093; }
+    .today {
+      border: 2pt solid #3a9aef !important;
+      background: #e3f2fd !important;
+    }
+    @media print {
+      html, body {
+        width: 297mm;
+        height: 210mm;
+        padding: 0;
+        margin: 0;
+      }
+      .month-page {
+        width: 100%;
+        height: 100%;
+        padding: 12mm 10mm;
+      }
+      .month-title {
+        font-size: 2.5em;
+      }
+      .month-table {
+        font-size: 1.3em;
+      }
+      .print-note {
+        display: none !important;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      .month-page {
+        width: 100%;
+        min-height: auto;
+        padding: 1em;
+      }
+      .month-title { font-size: 1.5em; }
+      .month-table { font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="month-page" id="month-july"></div>
+  <div class="month-page" id="month-aug"></div>
+  <div class="print-note" style="font-size:1.05em; color:#888; text-align:center; margin:1em 0;">
+    Each month is on a separate page, optimized for A4 landscape printing.
+  </div>
+  <script>
+    const activities = [
+      {"start":"2025-07-14T09:00","end":"2025-07-14T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-14T14:15","end":"2025-07-14T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+      {"start":"2025-07-15T15:00","end":"2025-07-15T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+      {"start":"2025-07-16T14:15","end":"2025-07-16T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+      {"start":"2025-07-17T09:00","end":"2025-07-17T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-17T19:45","end":"2025-07-17T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-07-19T09:00","end":"2025-07-19T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-21T09:00","end":"2025-07-21T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-21T14:15","end":"2025-07-21T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+      {"start":"2025-07-22T15:00","end":"2025-07-22T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+	  {"start":"2025-07-23T10:30","end":"2025-07-23T12:30","name":"芒果蛋糕","location":"華寶商業中心11樓G","activityId":8},
+      {"start":"2025-07-23T14:15","end":"2025-07-23T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+      {"start":"2025-07-24T09:00","end":"2025-07-24T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-24T19:45","end":"2025-07-24T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-07-25T10:00","end":"2025-07-25T11:15","name":"Heavy Metal","location":"寶豐工業大廈","activityId":3},
+      {"start":"2025-07-26T09:00","end":"2025-07-26T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-28T09:00","end":"2025-07-28T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-28T14:15","end":"2025-07-28T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+	  {"start":"2025-07-29T10:00","end":"2025-07-29T11:00","name":"三伏天","location":"鏡湖8樓","activityId":9},
+      {"start":"2025-07-29T15:00","end":"2025-07-29T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+      {"start":"2025-07-30T14:15","end":"2025-07-30T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+      {"start":"2025-07-31T09:00","end":"2025-07-31T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-07-31T19:45","end":"2025-07-31T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-08-01T10:00","end":"2025-08-01T11:15","name":"Heavy Metal","location":"寶豐工業大廈","activityId":3},
+      {"start":"2025-08-01T15:45","end":"2025-08-01T16:45","name":"驗眼","location":"","activityId":5},
+      {"start":"2025-08-02T09:00","end":"2025-08-02T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-04T09:00","end":"2025-08-04T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-04T14:15","end":"2025-08-04T15:30","name":"劍擊","location":"蓮峰體育中心(B室)","activityId":2},
+      {"start":"2025-08-05T15:00","end":"2025-08-05T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+      {"start":"2025-08-06T14:00","end":"2025-08-06T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-07T09:00","end":"2025-08-07T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-07T19:45","end":"2025-08-07T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-08-08T10:00","end":"2025-08-08T11:15","name":"Heavy Metal","location":"寶豐工業大廈","activityId":3},
+      {"start":"2025-08-08T14:00","end":"2025-08-08T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-09T09:00","end":"2025-08-09T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-11T09:00","end":"2025-08-11T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-11T10:00","end":"2025-08-11T12:00","name":"氣球扭扭樂","location":"南灣志豪大廈23A","activityId":7},
+      {"start":"2025-08-12T10:00","end":"2025-08-12T12:00","name":"氣球扭扭樂","location":"南灣志豪大廈23A","activityId":7},
+      {"start":"2025-08-12T15:00","end":"2025-08-12T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+      {"start":"2025-08-13T10:00","end":"2025-08-13T12:00","name":"氣球扭扭樂","location":"南灣志豪大廈23A","activityId":7},
+      {"start":"2025-08-13T14:00","end":"2025-08-13T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-14T09:00","end":"2025-08-14T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-14T10:00","end":"2025-08-14T12:00","name":"氣球扭扭樂","location":"南灣志豪大廈23A","activityId":7},
+      {"start":"2025-08-14T19:45","end":"2025-08-14T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-08-15T10:00","end":"2025-08-15T12:00","name":"氣球扭扭樂","location":"南灣志豪大廈23A","activityId":7},
+      {"start":"2025-08-15T14:00","end":"2025-08-15T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-16T09:00","end":"2025-08-16T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-18T09:00","end":"2025-08-18T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-19T15:00","end":"2025-08-19T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+      {"start":"2025-08-20T14:00","end":"2025-08-20T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-21T09:00","end":"2025-08-21T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-21T19:45","end":"2025-08-21T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-08-22T10:00","end":"2025-08-22T11:15","name":"Heavy Metal","location":"寶豐工業大廈","activityId":3},
+      {"start":"2025-08-22T14:00","end":"2025-08-22T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-23T09:00","end":"2025-08-23T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-25T09:00","end":"2025-08-25T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-26T15:00","end":"2025-08-26T16:15","name":"Heavy Metal","location":"寶豐工業大廈地下","activityId":3},
+      {"start":"2025-08-27T14:00","end":"2025-08-27T15:30","name":"國際象棋","location":"建興龍12樓M","activityId":6},
+      {"start":"2025-08-28T09:00","end":"2025-08-28T10:00","name":"普通話","location":"","activityId":1},
+      {"start":"2025-08-28T19:45","end":"2025-08-28T21:00","name":"鋼琴","location":"","activityId":4},
+      {"start":"2025-08-29T10:00","end":"2025-08-29T11:15","name":"Heavy Metal","location":"寶豐工業大廈","activityId":3},
+      {"start":"2025-08-29T14:00","end":"2025-08-29T15:30","name":"國際象棋","location":"","activityId":6},
+      {"start":"2025-08-30T09:00","end":"2025-08-30T10:00","name":"普通話","location":"","activityId":1}
+    ];
+
+    function groupByDate(activities) {
+      const byDate = {};
+      activities.forEach(act => {
+        const date = act.start.slice(0,10);
+        if (!byDate[date]) byDate[date] = [];
+        byDate[date].push(act);
+      });
+      return byDate;
+    }
+
+    function getMonthDays(year, month) {
+      return new Date(year, month + 1, 0).getDate();
+    }
+
+    function fmtDate(d) { return d.toISOString().slice(0,10); }
+    function fmtTime(str) {
+      const d = new Date(str);
+      return ('0'+d.getHours()).slice(-2) + ':' + ('0'+d.getMinutes()).slice(-2);
+    }
+
+    function fillMonth(year, month, byDate) {
+      const daysInMonth = getMonthDays(year, month);
+      const firstDay = new Date(year, month, 1).getDay(); // 0=Sun
+      const todayStr = fmtDate(new Date());
+      let html = `<div class="month-title">${year}年 ${month+1}月</div>`;
+      html += `<table class="month-table"><thead><tr>`;
+      const weekDays = ["日","一","二","三","四","五","六"];
+      weekDays.forEach(d => html += `<th>${d}</th>`);
+      html += `</tr></thead><tbody>`;
+      let day = 1;
+      for (let w=0; w<6; w++) {
+        html += `<tr>`;
+        for (let d=0; d<7; d++) {
+          if ((w===0 && d<firstDay) || day > daysInMonth) {
+            html += `<td class="empty"></td>`;
+          } else {
+            const dateStr = `${year}-${('0'+(month+1)).slice(-2)}-${('0'+day).slice(-2)}`;
+            const acts = byDate[dateStr]||[];
+            let classes = "";
+            if(dateStr === todayStr) classes += " today";
+            html += `<td class="${classes}"><span class="date-num">${day}</span>`;
+            acts.sort((a,b)=>a.start.localeCompare(b.start)).forEach(act=>{
+              html += `<span class="activity-chip c${act.activityId}">
+                ${fmtTime(act.start)}-${fmtTime(act.end)} ${act.name}
+                ${act.location ? `<span class="chip-loc">@ ${act.location}</span>` : ""}
+              </span>`;
+            });
+            html += `</td>`;
+            day++;
+          }
+        }
+        html += `</tr>`;
+        if (day > daysInMonth) break;
+      }
+      html += `</tbody></table>`;
+      return html;
+    }
+
+    const byDate = groupByDate(activities);
+    document.getElementById('month-july').innerHTML = fillMonth(2025, 6, byDate); // Month is 0-indexed, so 6 = July
+    document.getElementById('month-aug').innerHTML = fillMonth(2025, 7, byDate);  // 7 = August
+  </script>
+
+
+</body></html>
