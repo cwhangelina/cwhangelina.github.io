@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>2026年7月、8月 活動月曆列印版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 6mm;
+  }
+
+  html, body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", "Segoe UI", Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .month-page {
+    width: 210mm;
+    min-height: 297mm;
+    box-sizing: border-box;
+    padding: 6mm 7mm;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+  }
+
+  .month-page:last-child {
+    page-break-after: auto;
+  }
+
+  .month-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0.3em 0 0.25em 0;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .month-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.95em;
+    flex-grow: 1;
+  }
+
+  .month-table th,
+  .month-table td {
+    border: 1.5pt solid #b8b8b8;
+    width: 14.285%;
+    vertical-align: top;
+    padding: 0.2em 0.3em;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+  }
+
+  .month-table th {
+    background: #e3f3ff;
+    text-align: center;
+    font-weight: 900;
+    font-size: 0.95em;
+    padding: 0.2em 0;
+  }
+
+  .month-table td.empty {
+    background: #f7f7f7;
+    border: 1.5pt solid #e0e0e0;
+  }
+
+  .date-num {
+    font-size: 1em;
+    font-weight: bold;
+    color: #283593;
+    margin-bottom: 0.15em;
+    display: block;
+  }
+
+  .activity-chip {
+    display: block;
+    border-radius: 0.4em;
+    padding: 0.08em 0.4em 0.12em 0.4em;
+    margin: 0.15em 0;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 0.02em;
+    box-shadow: 0 1px 2px #0000001a;
+  }
+
+  .chip-time {
+    font-size: 0.88em;
+    display: block;
+    color: rgba(255,255,255,0.9);
+    font-weight: normal;
+  }
+
+  .chip-name {
+    display: block;
+    font-weight: bold;
+  }
+
+  .chip-loc {
+    font-size: 0.85em;
+    display: block;
+    color: #fffde7;
+    opacity: 0.9;
+    font-weight: normal;
+    margin-top: 0.05em;
+  }
+
+  .c-mandarin { background: #448aff; }
+  .c-fitness { background: #ff7043; }
+  .c-german { background: #3b82f6; }
+  .c-piano { background: #9c27b0; }
+  .c-badminton { background: #43a047; }
+  .c-chess { background: #0097A7; }
+  .c-drawing { background: #fbbe25; color: #272727; }
+  .c-basketball { background: #f59e0b; color: #272727; }
+  .c-workshop { background: #06b6d4; }
+  .c-trip { background: #f06292; }
+  .c-firstaid { background: #dc2626; }
+  .c-special { background: #64748b; }
+  .c-allday { background: #ec4899; }
+
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      padding: 0;
+      margin: 0;
+    }
+
+    .month-page {
+      width: 100%;
+      height: 100%;
+      padding: 6mm 7mm;
+    }
+
+    .month-title {
+      font-size: 2em;
+    }
+
+    .month-table {
+      font-size: 1em;
+    }
+
+    .print-note {
+      display: none !important;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .month-page {
+      width: 100%;
+      min-height: auto;
+      padding: 1em;
+    }
+
+    .month-title { font-size: 1.3em; }
+    .month-table { font-size: 0.75em; }
+  }
+</style>
+</head>
+<body>
+  <div class="month-page" id="month-july"></div>
+  <div class="month-page" id="month-aug"></div>
+  <div class="print-note" style="font-size:1em; color:#888; text-align:center; margin:1em 0;">
+    Each month is on a separate page, optimized for A4 portrait printing.
+  </div>
+
+<script>
+const DEFAULT_LOCATIONS = {
+  fitness: "寶豐地下",
+  workshop: "士多鳥拜斯栢景花園",
+  firstaid: "中土大廈3樓",
+  badminton: "街總藝駿中心6樓",
+  chess: "蓮峰",
+  basketball: "鮑思高"
+};
+
+const EVENTS = [
+  { date: "2026-07-01", start: "09:30", end: "10:30", title: "普通話", category: "mandarin" },
+  { date: "2026-07-01", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+  { date: "2026-07-01", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-07-02", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+
+  { date: "2026-07-03", start: "10:00", end: "11:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-03", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+
+  { date: "2026-07-04", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-04", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-07-05", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-07-06", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+
+  { date: "2026-07-07", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-08", start: "09:30", end: "10:30", title: "普通話", category: "mandarin" },
+  { date: "2026-07-08", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+  { date: "2026-07-08", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-07-09", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+  { date: "2026-07-09", start: "18:30", end: "19:30", title: "DIY聲控電路模型", category: "workshop" },
+
+  { date: "2026-07-10", start: "10:00", end: "11:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-10", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-11", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-11", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-07-12", allDay: true, title: "TRIP", category: "trip" },
+  { date: "2026-07-12", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-07-13", allDay: true, title: "TRIP", category: "trip" },
+
+  { date: "2026-07-14", allDay: true, title: "TRIP", category: "trip" },
+  { date: "2026-07-14", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-15", allDay: true, title: "TRIP", category: "trip" },
+  { date: "2026-07-15", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-07-16", allDay: true, title: "TRIP", category: "trip" },
+  { date: "2026-07-16", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+  { date: "2026-07-16", start: "18:30", end: "19:30", title: "DIY聲控電路模型", category: "workshop" },
+
+  { date: "2026-07-17", start: "10:00", end: "11:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-17", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-18", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-18", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-07-19", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-07-20", start: "09:30", end: "12:30", title: "急救", category: "firstaid" },
+  { date: "2026-07-20", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+
+  { date: "2026-07-21", start: "09:30", end: "12:30", title: "急救", category: "firstaid" },
+  { date: "2026-07-21", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-22", start: "09:30", end: "12:30", title: "急救", category: "firstaid" },
+  { date: "2026-07-22", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+  { date: "2026-07-22", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-07-23", start: "09:30", end: "12:30", title: "急救", category: "firstaid" },
+  { date: "2026-07-23", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+  { date: "2026-07-23", start: "18:30", end: "19:30", title: "DIY聲控電路模型", category: "workshop" },
+
+  { date: "2026-07-24", start: "09:30", end: "12:30", title: "急救", category: "firstaid" },
+  { date: "2026-07-24", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-25", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-25", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+  { date: "2026-07-25", start: "15:00", end: "16:00", title: "文藝青年開學禮", category: "special" },
+
+  { date: "2026-07-26", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-07-27", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+
+  { date: "2026-07-28", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-07-29", start: "09:30", end: "10:30", title: "普通話", category: "mandarin" },
+  { date: "2026-07-29", start: "15:00", end: "16:15", title: "體適能", category: "fitness" },
+  { date: "2026-07-29", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-07-30", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+  { date: "2026-07-30", start: "18:30", end: "19:30", title: "DIY聲控電路模型", category: "workshop" },
+
+  { date: "2026-07-31", start: "10:00", end: "11:00", title: "普通話", category: "mandarin" },
+  { date: "2026-07-31", start: "16:00", end: "18:00", title: "羽毛球", category: "badminton" },
+
+  { date: "2026-08-01", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-08-01", start: "10:00", end: "18:00", title: "文藝青年領袖培訓", category: "special" },
+  { date: "2026-08-01", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-08-02", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-08-03", start: "10:00", end: "12:00", title: "博物館的秘密", category: "special" },
+  { date: "2026-08-03", start: "15:00", end: "17:00", title: "文創與生活", category: "special" },
+
+  { date: "2026-08-04", start: "10:00", end: "11:30", title: "認識澳門建築遺產", category: "special" },
+  { date: "2026-08-04", start: "15:00", end: "17:00", title: "出版小知識,+文學館", category: "special" },
+
+  { date: "2026-08-05", start: "10:00", end: "12:00", title: "說好導賞的故事", category: "special" },
+  { date: "2026-08-05", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-08-06", start: "10:00", end: "11:30", title: "文化傳播", category: "special" },
+  { date: "2026-08-06", start: "15:30", end: "17:00", title: "演講初接觸", category: "special" },
+
+  { date: "2026-08-07", start: "10:30", end: "12:00", title: "文創空間參觀", category: "special" },
+  { date: "2026-08-07", start: "15:00", end: "17:00", title: "共賞藝博館", category: "special" },
+
+  { date: "2026-08-08", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-08-08", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-08-09", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-08-10", start: "10:00", end: "17:00", title: "製作家庭檔案", category: "special" },
+
+  { date: "2026-08-11", start: "10:00", end: "11:30", title: "考古會說話", category: "special" },
+  { date: "2026-08-11", start: "15:00", end: "17:00", title: "劇場生涯", category: "special" },
+
+  { date: "2026-08-12", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+  { date: "2026-08-12", start: "14:00", end: "17:00", title: "考察澳門建築遺產", category: "special" },
+  { date: "2026-08-12", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-08-13", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+  { date: "2026-08-13", start: "09:15", end: "13:00", title: "西式書裝訂", category: "special" },
+  { date: "2026-08-13", start: "15:00", end: "17:00", title: "議事亭藏書樓", category: "special" },
+
+  { date: "2026-08-14", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+  { date: "2026-08-14", start: "15:00", end: "17:00", title: "澳門非物質文化", category: "special" },
+
+  { date: "2026-08-15", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-08-15", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+  { date: "2026-08-15", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-08-16", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-08-17", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+  { date: "2026-08-18", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+
+  { date: "2026-08-19", start: "09:00", end: "10:30", title: "籃球", category: "basketball" },
+  { date: "2026-08-19", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-08-20", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+
+  { date: "2026-08-22", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+  { date: "2026-08-22", start: "10:30", end: "12:00", title: "繪畫", category: "drawing" },
+
+  { date: "2026-08-23", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" },
+
+  { date: "2026-08-26", start: "17:00", end: "18:00", title: "German", category: "german" },
+
+  { date: "2026-08-27", start: "15:15", end: "16:15", title: "Piano", category: "piano" },
+
+  { date: "2026-08-29", start: "09:00", end: "10:00", title: "普通話", category: "mandarin" },
+
+  { date: "2026-08-30", start: "10:30", end: "12:00", title: "國際象棋", category: "chess" }
+];
+
+const MONTHS = [
+  { year: 2026, month: 7, label: "7月" },
+  { year: 2026, month: 8, label: "8月" }
+];
+
+const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
+
+function pad2(num) {
+  return String(num).padStart(2, "0");
+}
+
+function dateKey(year, month, day) {
+  return `${year}-${pad2(month)}-${pad2(day)}`;
+}
+
+function getDaysInMonth(year, month) {
+  return new Date(year, month, 0).getDate();
+}
+
+function getFirstDayOfWeek(year, month) {
+  return new Date(year, month - 1, 1).getDay();
+}
+
+function timeToMinutes(time) {
+  if (!time) return -1;
+  const [h, m] = time.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function sortEvents(events) {
+  return [...events].sort((a, b) => {
+    if (a.allDay && !b.allDay) return -1;
+    if (!a.allDay && b.allDay) return 1;
+    return timeToMinutes(a.start) - timeToMinutes(b.start);
+  });
+}
+
+function getEventsForDate(date) {
+  return sortEvents(EVENTS.filter(event => event.date === date));
+}
+
+function getLocation(event) {
+  return event.location || DEFAULT_LOCATIONS[event.category] || "";
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function fillMonth(year, month, label) {
+  const daysInMonth = getDaysInMonth(year, month);
+  const firstDay = getFirstDayOfWeek(year, month);
+
+  let html = `<div class="month-title">${year}年 ${label}</div>`;
+  html += `<table class="month-table"><thead><tr>`;
+  WEEKDAYS.forEach(d => html += `<th>${d}</th>`);
+  html += `</tr></thead><tbody>`;
+
+  let day = 1;
+  for (let w = 0; w < 6; w++) {
+    html += `<tr>`;
+    for (let d = 0; d < 7; d++) {
+      if ((w === 0 && d < firstDay) || day > daysInMonth) {
+        html += `<td class="empty"></td>`;
+      } else {
+        const key = dateKey(year, month, day);
+        const events = getEventsForDate(key);
+
+        html += `<td><span class="date-num">${day}</span>`;
+        events.forEach(evt => {
+          const cat = evt.allDay ? "allday" : evt.category || "special";
+          const timeText = evt.allDay ? "全日" : `${evt.start}-${evt.end}`;
+          const location = getLocation(evt);
+
+          html += `<span class="activity-chip c-${escapeHtml(cat)}">`;
+          html += `<span class="chip-time">${escapeHtml(timeText)}</span>`;
+          html += `<span class="chip-name">${escapeHtml(evt.title)}</span>`;
+          if (location) {
+            html += `<span class="chip-loc">@ ${escapeHtml(location)}</span>`;
+          }
+          html += `</span>`;
+        });
+        html += `</td>`;
+        day++;
+      }
+    }
+    html += `</tr>`;
+    if (day > daysInMonth) break;
+  }
+  html += `</tbody></table>`;
+  return html;
+}
+
+document.getElementById("month-july").innerHTML = fillMonth(2026, 7, MONTHS[0].label);
+document.getElementById("month-aug").innerHTML = fillMonth(2026, 8, MONTHS[1].label);
+</script>
+
+</body>
+</html>
