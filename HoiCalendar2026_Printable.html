@@ -6,16 +6,20 @@
 <style>
   @page {
     size: A4 landscape;
-    margin: 2mm;
+    margin: 0;
   }
 
   * {
     box-sizing: border-box;
   }
 
-  body {
+  html, body {
     margin: 0;
-    background: #ffffff;
+    padding: 0;
+  }
+
+  body {
+    background: #e5e7eb;
     color: #111827;
     font-family: "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
     -webkit-print-color-adjust: exact;
@@ -23,13 +27,15 @@
   }
 
   .page {
-    width: 285mm;
-    min-height: 195mm;
-    margin: 0 auto;
-    padding: 4mm 5mm;
+    width: 297mm;
+    height: 210mm;
+    margin: 5mm auto;
+    padding: 2.5mm 3.5mm;
     background: #ffffff;
-    page-break-after: always;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    page-break-after: always;
   }
 
   .page:last-child {
@@ -37,41 +43,44 @@
   }
 
   .month-title {
-    margin: 0 0 4mm 0;
-    padding: 2mm 0;
+    margin: 0 0 1.5mm 0;
+    padding: 1mm 0;
     text-align: center;
-    font-size: 22pt;
-    line-height: 1.1;
+    font-size: 17pt;
+    line-height: 1.15;
     font-weight: 900;
     color: #111827;
-    border-bottom: 2.5px solid #111827;
+    border-bottom: 2px solid #111827;
+    flex-shrink: 0;
   }
 
   .calendar {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 1.2mm;
+    grid-template-rows: auto repeat(6, 1fr);
+    gap: 0.8mm;
+    min-height: 0;
   }
 
   .weekday {
     text-align: center;
-    font-size: 12pt;
+    font-size: 9pt;
     font-weight: 900;
-    /* padding: 1.5mm 0; */
     color: #111827;
     background: #dbeafe;
     border: 1px solid #93c5fd;
-    border-radius: 4px;
+    border-radius: 2px;
+    padding: 0.8mm 0;
   }
 
   .day {
-    min-height: 30mm;
-    border-radius: 5px;
+    border-radius: 2px;
     background: #f8fafc;
-    /* border: 1px solid #cbd5e1; */
-    /* padding: 1mm 1.2mm; */
     position: relative;
     overflow: hidden;
+    min-height: 0;
+    padding: 0.5mm 0.8mm;
   }
 
   .day.empty {
@@ -83,12 +92,12 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 0.8mm;
+    margin-bottom: 0.3mm;
   }
 
   .date-num {
-    width: 5mm;
-    height: 5mm;
+    width: 4mm;
+    height: 4mm;
     border-radius: 999px;
     background: #ffffff;
     color: #111827;
@@ -96,24 +105,23 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 8pt;
+    font-size: 7pt;
     font-weight: 900;
   }
 
   .events {
     display: flex;
     flex-direction: column;
-    gap: 0.6mm;
+    gap: 0.3mm;
   }
 
   .event {
-    border-left: 3px solid var(--c);
+    border-left: 2px solid var(--c);
     background: var(--bg);
     color: #111827;
-    border-radius: 4px;
-    padding: 0.8mm 1mm;
-    font-size: 8.5pt;
-    line-height: 1.2;
+    border-radius: 2px;
+    padding: 0.4mm 0.6mm;
+    line-height: 1.1;
     overflow: hidden;
     break-inside: avoid;
   }
@@ -122,25 +130,23 @@
     display: block;
     font-weight: 900;
     color: #111827;
-    font-size: 9pt;
-    line-height: 1.15;
-    margin-bottom: 0.2mm;
+    font-size: 7pt;
+    line-height: 1.05;
   }
 
   .event .name {
     display: block;
-    font-weight: 750;
-    font-size: 10pt;
-    line-height: 1.2;
+    font-weight: 700;
+    font-size: 8pt;
+    line-height: 1.1;
   }
 
   .event .loc {
     display: block;
     color: #334155;
-    font-size: 7.8pt;
+    font-size: 6pt;
     font-weight: 600;
-    margin-top: 0.2mm;
-    line-height: 1.15;
+    line-height: 1.05;
     white-space: normal;
   }
 
@@ -169,14 +175,7 @@
     }
 
     .page {
-      width: auto;
-      min-height: auto;
       margin: 0;
-      padding: 3mm 4mm;
-    }
-
-    .month-title {
-      font-size: 20pt;
     }
   }
 </style>
@@ -457,7 +456,7 @@ function createMonthPage({ year, month, title }) {
     cells.push(createDayCell(year, month, day));
   }
 
-  while (cells.length % 7 !== 0) {
+  while (cells.length < 42) {
     cells.push(createEmptyCell());
   }
 
